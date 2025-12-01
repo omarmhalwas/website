@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>أسئلة وأجوبة – جامعة القدس المفتوحة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* إعدادات عامة */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0c2461 0%, #1e3799 30%, #4a69bd 70%, #6a89cc 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+    
+    /* تأثيرات خلفية متطورة */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 2%, transparent 10%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 2%, transparent 10%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.08) 1%, transparent 8%),
+        radial-gradient(circle at 60% 20%, rgba(255, 255, 255, 0.08) 1%, transparent 8%);
+      z-index: -2;
+    }
+    
+    /* تأثير نجوم متحركة */
+    .stars {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .star {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 5s infinite;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    /* الحاوية الرئيسية */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    /* الشريط العلوي مع الشعار */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 15px 30px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to left, #ff9f43, #ff6b6b, #48dbfb, #1dd1a1);
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #0c2461, #4a69bd);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .university-name {
+      font-size: 1.8rem;
+      color: #0c2461;
+      font-weight: 800;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .university-name span {
+      color: #ff6b6b;
+    }
+    
+    .header-icons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .header-icon {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #48dbfb, #0abde3);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .header-icon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* العنوان الرئيسي */
+    .main-title {
+      text-align: center;
+      color: white;
+      font-size: 2.8rem;
+      margin-bottom: 50px;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      padding-bottom: 20px;
+    }
+    
+    .main-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 200px;
+      height: 5px;
+      background: linear-gradient(to left, #ff9f43, #ff6b6b, #48dbfb);
+      border-radius: 3px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* عناوين الأقسام */
+    .section-title {
+      color: white;
+      font-size: 2rem;
+      margin: 60px 0 30px;
+      padding: 20px 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      border-right: 8px solid #ff9f43;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .section-title::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+      z-index: -1;
+    }
+    
+    .section-icon {
+      font-size: 1.8rem;
+      color: #ff9f43;
+      background: rgba(255, 255, 255, 0.2);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* مربعات الأسئلة والأجوبة */
+    .faq-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+    
+    @media (max-width: 768px) {
+      .faq-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .faq-box {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      position: relative;
+    }
+    
+    .faq-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+    
+    .faq-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to left, #48dbfb, #0c2461);
+    }
+    
+    /* السؤال */
+    .question {
+      font-weight: 700;
+      cursor: pointer;
+      color: #0c2461;
+      padding: 25px 30px;
+      font-size: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .question:hover {
+      background: rgba(12, 36, 97, 0.05);
+    }
+    
+    .question-icon {
+      color: #ff6b6b;
+      font-size: 1.2rem;
+      margin-left: 10px;
+    }
+    
+    .toggle-icon {
+      font-size: 1.8rem;
+      color: #48dbfb;
+      font-weight: 300;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      background: rgba(72, 219, 251, 0.1);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .question.active .toggle-icon {
+      transform: rotate(180deg);
+      background: rgba(255, 107, 107, 0.1);
+      color: #ff6b6b;
+    }
+    
+    /* الإجابة */
+    .answer {
+      display: none;
+      padding: 0 30px 30px;
+      color: #444;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      border-top: 1px solid rgba(12, 36, 97, 0.1);
+      animation: slideDown 0.5s ease;
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; max-height: 0; }
+      to { opacity: 1; max-height: 500px; }
+    }
+    
+    /* تصميم المراجع */
+    .citation {
+      display: inline-block;
+      background: linear-gradient(to right, rgba(72, 219, 251, 0.1), rgba(29, 209, 161, 0.1));
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #0c2461;
+      margin-top: 15px;
+      border-right: 4px solid #1dd1a1;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* شريط التقدم */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+    }
+    
+    .progress-bar {
+      height: 5px;
+      background: linear-gradient(to left, #ff9f43, #ff6b6b, #48dbfb);
+      width: 0%;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 107, 107, 0.7);
+    }
+    
+    /* تذييل الصفحة */
+    .footer {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 60px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to left, #1dd1a1, #48dbfb, #0c2461);
+    }
+    
+    .footer-logo {
+      font-size: 2.5rem;
+      color: #0c2461;
+      margin-bottom: 15px;
+    }
+    
+    .footer-text {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+    
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .facebook { background: linear-gradient(135deg, #3b5998, #8b9dc3); }
+    .twitter { background: linear-gradient(135deg, #1da1f2, #71c9f8); }
+    .youtube { background: linear-gradient(135deg, #ff0000, #ff4d4d); }
+    .instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    
+    /* زر العودة للأعلى */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #ff6b6b, #ff9f43);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+      transition: all 0.3s ease;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      border: 3px solid white;
+    }
+    
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.6);
+    }
+    
+    /* تأثيرات متحركة */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .floating {
+      animation: float 5s ease-in-out infinite;
+    }
+    
+    /* تصميم للمصادر */
+    .source-link {
+      color: #0c2461;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: rgba(72, 219, 251, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .source-link:hover {
+      background: rgba(72, 219, 251, 0.4);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- شريط التقدم -->
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- النجوم المتحركة -->
+<div class="stars" id="starsContainer"></div>
+
+<div class="container">
+  <!-- الشريط العلوي -->
+  <div class="header floating">
+    <div class="logo-container">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="university-name">جامعة القدس <span>المفتوحة</span></div>
+    </div>
+    
+    
+  </div>
+
+  <!-- العنوان الرئيسي -->
+  <h1 class="main-title">الأسئلة الشائعة – جامعة القدس المفتوحة</h1>
+
+  <!-- قسم الرسوم الدراسية -->
+  <div class="section-title">
+    <div class="section-icon">
+      <i class="fas fa-money-bill-wave"></i>
+    </div>
+    <span>الرسوم الدراسية</span>
+  </div>
+
+  <div class="faq-container">
+    <div class="faq-box">
+      <div class="question">
+        <div>
+          <i class="fas fa-question-circle question-icon"></i>
+          كم رسوم الساعة المعتمدة؟
+        </div>
+        <div class="toggle-icon">+</div>
+      </div>
+      <div class="answer">يعتمد على التخصص: في التخصصات العادية 104.5 شيكل للساعة، بعض التخصصات مثل الإدارة الرقمية 137.5 شيكل، الإعلام أو العلاقات الدولية 165 شيكل.  
+        <div class="citation">المصدر: <a href="https://www.qou.edu" target="_blank" class="source-link">موقع جامعة القدس المفتوحة</a></div>
+      </div>
+    </div>
+
+    <div class="faq-box">
+      <div class="question">
+        <div>
+          <i class="fas fa-question-circle question-icon"></i>
+          هل في رسوم إضافية غير الساعة؟
+        </div>
+        <div class="toggle-icon">+</div>
+      </div>
+      <div class="answer">نعم — في رسوم طلب الالتحاق، رسوم تسجيل أول مرة، رسوم فصلية خدمة/خدمات إلكترونية، ورسوم بطاقة — حسب ما هو مذكور في جدول الرسوم.  
+        <div class="citation">المصدر: <a href="https://www.qou.edu" target="_blank" class="source-link">موقع جامعة القدس المفتوحة</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- قسم التسجيل -->
+  <div class="section-title">
+    <div class="section-icon">
+      <i class="fas fa-edit"></i>
+    </div>
+    <span>التسجيل</span>
+  </div>
+
+  <div class="faq-container">
+    <div class="faq-box">
+      <div class="question">
+        <div>
+          <i class="fas fa-question-circle question-icon"></i>
+          كم أقل عدد ساعات للتسجيل يُعتبر الطالب منتسب رسمياً؟
+        </div>
+        <div class="toggle-icon">+</div>
+      </div>
+      <div class="answer">على الأقل 4 ساعات معتمدة في الفصل لكي تعتبر مُسجّل.  
+        <div class="citation">المصدر: <a href="https://www.qou.edu" target="_blank" class="source-link">موقع جامعة القدس المفتوحة</a></div>
+      </div>
+    </div>
+
+    <div class="faq-box">
+      <div class="question">
+        <div>
+          <i class="fas fa-question-circle question-icon"></i>
+          كم الحد الأقصى للساعات في الفصل؟
+        </div>
+        <div class="toggle-icon">+</div>
+      </div>
+      <div class="answer">عادة 18 ساعة معتمدة بالفصل.  
+        <div class="citation">المصدر: <a href="https://www.qou.edu" target="_blank" class="source-link">موقع جامعة القدس المفتوحة</a></div>
+      </div>
+    </div>
+
+    <div class="faq-box">
+      <div class="question">
+        <div>
+          <i class="fas fa-question-circle question-icon"></i>
+          إذا قربت أتخرج، كم ممكن أسجل؟
+        </div>
+        <div class="toggle-icon">+</div>
+      </div>
+      <div class="answer">فصل التخرج ممكن تسجل لحد 21 ساعة معتمدة.  
+        <div class="citation">المصدر: <a href="https://www.qou.edu" target="_blank" class="source-link">موقع جامعة القدس المفتوحة</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- قسم ساعات التخصص -->
+  <div class="section-title">
+    <div class="section-icon">
+      <i class="fas fa-book-open"></i>
+    </div>
+    <span>ساعات التخصص والخطة الدراسية</span>
+  </div>
+
+  <div class="faq-container">
+    <div class="faq-box">
+      <div class="question">
+        <div>
+          <i class="fas fa-question-circle question-icon"></i>
+          كم عدد ساعات التخصص المطلوب تقريباً للتخرج؟
+        </div>
+        <div class="toggle-icon">+</div>
+      </div>
+      <div class="answer">يعتمد على التخصص — كثير تخصصات تمشي 129 ساعة معتمدة، وبعضها (حسب التخصص) 132 أو 135 ساعة.  
+        <div class="citation">المصدر: <a href="https://www.qou.edu" target="_blank" class="source-link">موقع جامعة القدس المفتوحة</a></div>
+      </div>
+    </div>
+
+    <div class="faq-box">
+      <div class="question">
+        <div>
+          <i class="fas fa-question-circle question-icon"></i>
+          كيف أعرف خطة التخصص؟
+        </div>
+        <div class="toggle-icon">+</div>
+      </div>
+      <div class="answer">تفحص تفاصيل التخصص في موقع الجامعة أو استفسر من مرشدك الأكاديمي — الخطة مذكورة حسب التخصص.  
+        <div class="citation">المصدر: <a href="https://www.qou.edu" target="_blank" class="source-link">موقع جامعة القدس المفتوحة</a></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- التذييل -->
+  <div class="footer floating">
+    <div class="footer-logo">
+      <i class="fas fa-university"></i>
+    </div>
+    <h3>جامعة القدس المفتوحة</h3>
+    <p class="footer-text">نفتح آفاق المعرفة لكل طالب علم، ونرعى طموح الباحثين عن مستقبل أفضل</p>
+    <p class="footer-text">© 2023 جامعة القدس المفتوحة - جميع الحقوق محفوظة</p>
+    
+    <div class="social-icons">
+      <div class="social-icon facebook">
+        <i class="fab fa-facebook-f"></i>
+      </div>
+      <div class="social-icon twitter">
+        <i class="fab fa-twitter"></i>
+      </div>
+      <div class="social-icon youtube">
+        <i class="fab fa-youtube"></i>
+      </div>
+      <div class="social-icon instagram">
+        <i class="fab fa-instagram"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- زر العودة للأعلى -->
+<div class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+  // إنشاء النجوم المتحركة
+  function createStars() {
+    const starsContainer = document.getElementById('starsContainer');
+    const starCount = 100;
+    
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      
+      // أحجام عشوائية للنجوم
+      const size = Math.random() * 3 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      
+      // مواقع عشوائية
+      star.style.right = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      
+      // تأخير عشوائي للوميض
+      star.style.animationDelay = `${Math.random() * 5}s`;
+      
+      starsContainer.appendChild(star);
+    }
+  }
+  
+  // تنفيذ خاصية فتح/إغلاق الإجابات
+  document.querySelectorAll('.question').forEach(q => {
+    q.addEventListener('click', () => {
+      const answer = q.nextElementSibling;
+      const toggleIcon = q.querySelector('.toggle-icon');
+      
+      // إغلاق جميع الإجابات الأخرى
+      document.querySelectorAll('.question').forEach(otherQ => {
+        if (otherQ !== q) {
+          otherQ.classList.remove('active');
+          const otherAnswer = otherQ.nextElementSibling;
+          otherAnswer.style.display = "none";
+          otherQ.querySelector('.toggle-icon').textContent = '+';
+        }
+      });
+      
+      // فتح/إغلاق الإجابة الحالية
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+        q.classList.remove('active');
+        toggleIcon.textContent = '+';
+      } else {
+        answer.style.display = "block";
+        q.classList.add('active');
+        toggleIcon.textContent = '−';
+      }
+    });
+  });
+  
+  // شريط التقدم
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+    
+    // زر العودة للأعلى
+    const backToTopBtn = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  
+  // زر العودة للأعلى
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  
+  // تأثيرات عند تحميل الصفحة
+  document.addEventListener('DOMContentLoaded', function() {
+    // إنشاء النجوم
+    createStars();
+    
+    // تأثير ظهور تدريجي للعناصر
+    const elements = document.querySelectorAll('.faq-box, .section-title, .header, .footer');
+    elements.forEach((element, index) => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(30px)';
+      
+      setTimeout(() => {
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+      }, 100 * index);
+    });
+    
+    // فتح أول سؤال تلقائياً
+    const firstQuestion = document.querySelector('.question');
+    if (firstQuestion) {
+      firstQuestion.click();
+    }
+  });
+</script>
+
+</body>
+</html>
